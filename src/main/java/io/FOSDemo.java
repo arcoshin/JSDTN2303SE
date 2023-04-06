@@ -26,7 +26,8 @@ public class FOSDemo {
              */
             fos.write(97);//fos.dat文件中若是點開看會自動使用ASCII編碼可視化，因此我們會看到a
             fos.write('a');//char類性'a'底層其實就是(char)97，因此可視化依然是看見a
-            fos.write("中文字\n".getBytes());
+
+            fos.write("\r\n中文字\r\n".getBytes());
             fos.write("哈哈哈".getBytes());
             System.out.println("寫入完畢");
 
