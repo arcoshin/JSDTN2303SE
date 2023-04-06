@@ -11,7 +11,7 @@ public class CreateNewFileDemo {
         /**
          * 在當前目錄下新建一個名為test.txt的文件
          */
-        File file = new File("./test.txt");
+        File file = new File("./demo/test.txt");
         boolean success = file.createNewFile();
         if (success) {
             System.out.println(file.getName() + "文件創建成功");
