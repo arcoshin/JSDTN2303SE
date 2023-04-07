@@ -10,7 +10,10 @@ import java.io.IOException;
 public class Test {
     public static void main(String[] args) {
         try {
-            FileOutputStream fos = new FileOutputStream("demo/test.test");
+            FileOutputStream fos = new FileOutputStream("./demo/test.test");
+            for (int i = 65; i <= 90; i++) {
+                fos.write(i);
+            }
             for (int i = 97; i <= 122; i++) {
                 fos.write(i);
             }
@@ -19,6 +22,7 @@ public class Test {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        System.out.println("finish");
 
     }
 }

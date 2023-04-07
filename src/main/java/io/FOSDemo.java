@@ -2,7 +2,6 @@ package io;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 
 /**
  * 文件輸出流
@@ -26,14 +25,27 @@ public class FOSDemo {
              */
             fos.write(97);//fos.dat文件中若是點開看會自動使用ASCII編碼可視化，因此我們會看到a
             fos.write('a');//char類性'a'底層其實就是(char)97，因此可視化依然是看見a
-
-            fos.write("\r\n中文字\r\n".getBytes());
-            fos.write("哈哈哈".getBytes());
-            System.out.println("寫入完畢");
-
+            /**
+             * int 255 的二進制 00000000 00000000 00000000 11111111
+             * for.write.寫入的數據                        ^^^^^^^^
+             *
+             * int 256 的二進制 00000000 00000000 00000001 00000000
+             * for.write.寫入的數據                        ^^^^^^^^
+             *
+             * int 0 的二進制 00000000 00000000 00000000 00000000
+             * for.write寫入的數據                       ^^^^^^^^
+             *
+             * int -1 的二進制 11111111 11111111 11111111 11111111
+             * for.write.寫入的數據                       ^^^^^^^^
+             */
+            fos.write(255);
+            fos.write(256);
+            fos.write(0);
+            fos.write(-1);
         } catch (IOException e) {
 
         }
+
 
 
     }
