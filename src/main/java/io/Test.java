@@ -7,7 +7,7 @@ import java.io.IOException;
 /**
  * 向文件寫入a-z
  */
-public class Test {
+class Test {
     public static void main(String[] args) {
         try {
             FileOutputStream fos = new FileOutputStream("./demo/test.test");

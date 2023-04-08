@@ -7,7 +7,7 @@ import java.nio.charset.StandardCharsets;
 public class WriteStringDemo {
     public static void main(String[] args) {
         try (
-                FileOutputStream fos = new FileOutputStream("demo/fos.test",true);//append:追加模式
+                FileOutputStream fos = new FileOutputStream("demo/fos.test",false);//append:追加模式
         ) {
 
             String line = "測試測試測試";
