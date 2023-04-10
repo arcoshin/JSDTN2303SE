@@ -1,10 +1,10 @@
-package homework.day02;
+package homework.day03;
 
 import java.io.Serializable;
 
 class User implements Serializable {
 
-    private final static long serialVersionUID = 999L;
+    long serialVersionUID = 999L;
 
     private String name;
     private String pwd;

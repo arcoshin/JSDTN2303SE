@@ -7,6 +7,8 @@ import java.io.ObjectOutputStream;
 import java.util.Scanner;
 
 class Test04 {
+    static String pathName = "src/demo/users";
+
     public static void main(String[] args) {
         home();
         return;
@@ -47,7 +49,7 @@ class Test04 {
      * 查看使用者列表業務
      */
     private static void showList() {
-        File path = new File("demo/users");
+        File path = new File(pathName);
         File[] lists = path.listFiles();
         for (File list : lists) {
             System.out.println(list.getName());
@@ -66,7 +68,7 @@ class Test04 {
         /**
          * 使用對象輸出流執行序列化並輸出對象生成名稱.obj作保存
          */
-        File path = new File("demo/users");//定位模擬人資數據庫
+        File path = new File(pathName);//定位模擬人資數據庫
         createUser_obj(path, user);//傳入所需資料自動生成
 
         home();//結束後回到選單
