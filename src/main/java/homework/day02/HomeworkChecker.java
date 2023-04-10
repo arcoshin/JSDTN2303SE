@@ -583,6 +583,7 @@ class QuestionDatabase extends HomeworkCheckerTools {
                 fos.write(d);
             }
 
+
             /**
              * 打樁驗證
              */
@@ -596,12 +597,14 @@ class QuestionDatabase extends HomeworkCheckerTools {
                 System.out.println("複製成功，但複製的檔案與原檔案大小不一致------>需要稍加修正");
             }
 
-
+            fis.close();
+            fos.close();
         } catch (Exception e) {//捕獲所有異常
             e.printStackTrace();//但不處理
         }
 
         //背景代碼存放區結束----------------------------------------
+        backToMenu();
         return;
     }
 

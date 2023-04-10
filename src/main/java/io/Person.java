@@ -9,7 +9,7 @@ public class Person implements Serializable {
     private String name;
     int age;
     String gender;
-    private String[] otherInfo;
+    private transient String[] otherInfo;//transient，序列化時，排除在外不傳輸
 
     public Person(String name, int age, String gender, String otherInfo[]) {
         this.name = name;
