@@ -5,7 +5,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 /**
- * 文件輸入流FileInputStream
+ * 文件輸入流
+ * FileInputStream
  */
 public class FISDemo {
     public static void main(String[] args) {

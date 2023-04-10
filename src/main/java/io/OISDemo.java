@@ -6,6 +6,7 @@ import java.util.Arrays;
 
 /**
  * 對象輸入流
+ * ObjectInputStream
  */
 class OISDemo {
     public static void main(String[] args) {

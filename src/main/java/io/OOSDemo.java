@@ -6,6 +6,7 @@ import java.io.ObjectOutputStream;
 
 /**
  * 對象輸出流
+ * ObjectOutputStream
  */
 public class OOSDemo {
     public static void main(String[] args) {

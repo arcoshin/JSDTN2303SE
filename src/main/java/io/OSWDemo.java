@@ -6,7 +6,8 @@ import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
 
 /**
- * OutputStreamWriter:轉換字符輸出流
+ * 轉換字符輸出流
+ * OutputStreamWriter
  */
 class OSWDemo {
     public static void main(String[] args) {
@@ -20,9 +21,9 @@ class OSWDemo {
                  */
                 OutputStreamWriter osw = new OutputStreamWriter(fos, StandardCharsets.UTF_8);
         ) {
-            osw.write("夜空中最亮的星，能否聽清\r");
-            osw.write("那仰望的人心底的孤獨和嘆息\n");
-            osw.write("。\n");
+            osw.write("夜空中最亮的星，能否聽清\r\n");
+            osw.write("那仰望的人心底的孤獨和嘆息\r\n");
+            osw.write("。\r\n");
             System.out.println("寫出完畢");
 
         } catch (Exception e) {
