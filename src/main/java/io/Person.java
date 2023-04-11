@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * 使用當前類測試對象流的讀寫操作
  */
-public class Person implements Serializable {
+class Person implements Serializable {
     private String name;
     int age;
     String gender;

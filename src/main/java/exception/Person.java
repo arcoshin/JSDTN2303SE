@@ -3,8 +3,11 @@ package exception;
 /**
  * 使用當前類測試異常的拋出
  */
-public class Person {
+class Person {
     private int age;
+
+    public Person() {
+    }
 
     public Person(int age) {
         this.age = age;
@@ -14,9 +17,9 @@ public class Person {
         return age;
     }
 
-    public void setAge (int age) {
+    public void setAge (int age) throws IllegalAgeException {
         if (age < 0 || age >= 120) {
-            throw new RuntimeException("輸入年齡不合法");
+            throw new IllegalAgeException("輸入年齡不合法");
         } else {
             this.age = age;
         }
