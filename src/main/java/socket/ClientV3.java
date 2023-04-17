@@ -1,6 +1,7 @@
 package socket;
 
 import java.io.*;
+import java.net.ServerSocket;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
@@ -9,7 +10,7 @@ import java.util.Scanner;
  * 聊天室客戶端
  */
 
-public class Client {
+public class ClientV3 {
     /**
      * java.net.Socket:套接字(原意插座)
      * Socket封裝了TCP協議的通訊細節，使用他就可以與遠端計算機進行TCP連接
@@ -21,7 +22,7 @@ public class Client {
     /**
      * 構造器，用來初始化客戶端
      */
-    public Client() {
+    public ClientV3() {
         try {
             /**
              * 實例化Socket時需要傳入兩個參數用於與遠端計算機建立連接
@@ -39,8 +40,8 @@ public class Client {
              * 終端程序
              * /sbin/ifconfig
              */
-//            socket = new Socket("192.168.0.17", 9188);
-            socket = new Socket("localhost", 9188);
+            socket = new Socket("192.168.1.159", 9188);
+//            socket = new Socket("localhost", 9188);
             System.out.println("連接成功......!");
         } catch (IOException e) {
             e.printStackTrace();
@@ -52,6 +53,12 @@ public class Client {
      */
     public void start() {
         try {
+            ServerHandler serverHandler = new ServerHandler(socket);
+            Thread t = new Thread(serverHandler);
+            t.setDaemon(true);
+            t.start();
+
+
             PrintWriter pw =
                     new PrintWriter(
                             new BufferedWriter(
@@ -61,14 +68,21 @@ public class Client {
                     );
             System.out.println("請輸入訊息，輸入exit可退出");
 
+            /**
+             * 不斷接收是否有輸入訊息
+             */
             while (true) {
                 String line = new Scanner(System.in).nextLine();
                 if ("EXIT".equalsIgnoreCase(line)) {
                     break;
                 } else {
+                    /**
+                     * 有就寫出
+                     */
                     pw.println(line);
                     System.err.println("......push ok!");
                 }
+
             }
 
 
@@ -89,8 +103,46 @@ public class Client {
      * 程序入口
      */
     public static void main(String[] args) {
-        Client client = new Client();
+        ClientV3 client = new ClientV3();
         client.start();
     }
 
+    /**
+     * 線程任務類
+     * 負責讀取來自服務器廣播的訊息
+     */
+    private class ServerHandler implements Runnable{
+        Socket socket;
+
+        public ServerHandler(Socket socket) {
+            this.socket = socket;
+
+
+        }
+
+        @Override
+        public void run() {
+            try {
+                BufferedReader br = new BufferedReader(
+                        new InputStreamReader(
+                                socket.getInputStream(), StandardCharsets.UTF_8
+                        )
+                );
+
+                /**
+                 * 讀一句，並且打印
+                 */
+                String line;
+                while (true) {
+                    line = br.readLine();
+                    System.out.println(line);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
+
 }
+

@@ -262,10 +262,10 @@ class HomeworkCheckerTools {
  * 資料庫類(尚須手動更新)
  */
 class QuestionDatabase extends HomeworkCheckerTools {
-    /**
-     * 將題目存入並生成題目列表(data)的方法:QB->HWC
-     */
     Question[] downloadQuestion() {
+        /**
+         * 將題目存入並生成題目列表(data)的方法:QB->HWC
+         */
         Question[] data = new Question[3];//<<---------------------------------手動修改
         data[0] = new Question(1, "", "");
         data[1] = new Question(2, "", "");
